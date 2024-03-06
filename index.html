@@ -7,38 +7,78 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
   <title>Frontend Mentor | Tip calculator app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
 <body>
+  <header>
+    <a href="index.html"><img src="images/logo.svg" alt="Splitter"></a>
+  </header>
 
-  Bill
+  <main>
+    <section>
+      <form action="">
+        <div class="bill">
+          <label for="bill">Bill</label>
+          <input type="number" id="bill" name="bill" placeholder="0">
+        </div>
+        
+        <fieldset>
+          <legend>Select Tip &#37;</legend>
+          <div>
+            <input type="radio" id="five" name="five" value="5">
+            <label for="five">5&#37;</label>
+          </div>
 
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
+          <div>
+            <input type="radio" id="ten" name="ten" value="10">
+            <label for="ten">10&#37;</label>
+          </div>
 
-  Number of People
+          <div>
+            <input type="radio" id="fifteen" name="fifteen" value="15">
+            <label for="fifteen">15&#37;</label>
+          </div>
 
-  Tip Amount
-  / person
+          <div>
+            <input type="radio" id="twenty__five" name="twenty__five" value="25">
+            <label for="twenty__five">25&#37;</label>
+          </div>
 
-  Total
-  / person
+          <div>
+            <input type="radio" id="fifty" name="fifty" value="50">
+            <label for="fifty">50&#37;</label>
+          </div>
 
-  Reset
-  
-  <div class="attribution">
+          <div>
+            <input type="number" id="custom" name="custom" placeholder="Custom">
+            <label for="custom">Custom</label>
+          </div>
+        </fieldset>
+
+        <div class="people">
+          <label for="people">Number of People</label>
+          <input type="number" id="people" name="people" placeholder="0">
+        </div>
+      </form>
+
+      <div class="result">
+        <div class="tip__amount">
+          <p>Tip Amount <span>/ person</span></p>
+          <p>&#37;<span class="value1">0.00</span></p>
+        </div>
+
+        <div class="total">
+          <p>Total <span>/ person</span></p>
+          <p>&#37;<span class="value1">0.00</span></p>
+        </div>
+
+        <button>Reset</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+    Coded by <a href="#">Thu Nguyen</a>.
+  </footer>
 </body>
 </html>
