@@ -23,7 +23,7 @@
       <form action="">
         <div class="bill__wrapper">
           <label for="bill" class="title">Bill</label>
-          <input type="number" id="bill" name="bill" class="number" placeholder="0">
+          <input type="numeric" id="bill" name="bill" class="number" placeholder="0">
         </div>
         
         <fieldset>
@@ -55,7 +55,7 @@
             </div>
 
             <div class="opt opt6">
-              <input type="number" id="custom" name="tip" placeholder="Custom">
+              <input type="numeric" id="custom" name="tip" class="number" placeholder="Custom">
               <!-- <label for="custom">Custom</label> -->
             </div>
           </div>
@@ -63,19 +63,19 @@
 
         <div class="people__wrapper">
           <label for="people" class="title">Number of People</label>
-          <input type="number" id="people" name="people" class="number" placeholder="0">
+          <input type="numeric" id="people" name="people" class="number" placeholder="0">
         </div>
       </form>
 
       <div class="result">
-        <div class="tip__amount">
-          <p>Tip Amount <span>/ person</span></p>
-          <p>&#37;<span class="value1">0.00</span></p>
+        <div class="tip__amount flex">
+          <p>Tip Amount <span class="spe__char">/ person</span></p>
+          <p class="money"><span class="dollar">&dollar;</span>0.00</p>
         </div>
 
-        <div class="total">
-          <p>Total <span>/ person</span></p>
-          <p>&#37;<span class="value1">0.00</span></p>
+        <div class="total flex">
+          <p>Total <span class="spe__char">/ person</span></p>
+          <p class="money"><span class="dollar">&dollar;</span>0.00</p>
         </div>
 
         <button>Reset</button>
