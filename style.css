@@ -56,7 +56,8 @@ select {
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {   
+
   html:focus-within {
    scroll-behavior: auto;
   }
@@ -80,6 +81,8 @@ select {
   --light-grayish-cyan: hsl(185, 41%, 84%);
   --very-light-grayish-cyan: hsl(189, 41%, 97%);
   --white: hsl(0, 0%, 100%);
+  --light-cyan: hsl(173, 61%, 77%);
+  --btn: hsl(183, 79%, 24%);
 
   --fs-small: .8125rem;
   --fs-text: 1rem;
@@ -100,12 +103,17 @@ body {
   gap: 2.5625rem;
 }
 
+header {
+  margin-top: 50px;
+}
+
 main {
+  max-width: 100%;
   background-color: var(--white);
 
   border-top-left-radius: 1.5625rem;
   border-top-right-radius: 1.5625rem;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
 }
 
 section {
@@ -139,9 +147,16 @@ input {
 }
 
 .number {
+  width: 100%;
+  max-width: 100%;
   padding: .9375rem;
+
   background-color: var(--very-light-grayish-cyan);
+  caret-color: var(--strong-cyan);
+  outline-color: var(--strong-cyan);
   text-align: right;
+  color: var(--very-dark-cyan);
+
   background-repeat: no-repeat;
   background-position: left 15px top 50%;
 }
@@ -214,18 +229,90 @@ fieldset {
   margin-block: .9375rem;
 }
 
+.opt:hover input[type='radio'] {
+  background-color: var(--light-cyan);
+  cursor: pointer;
+}
+
+.opt input[type='radio']:checked {
+  background-color: var(--strong-cyan);
+}
+
+.opt:hover label {
+  color: var(--very-dark-cyan);
+  cursor: pointer;
+}
+
+.opt input[type='radio']:checked + label {
+  color: var(--very-dark-cyan);
+}
+
 .opt6 input {
-  background-color: var(--very-light-grayish-cyan);
+  width: 100%;
 }
 
 .opt6 input::placeholder {
   color: var(--grayish-cyan);
-  text-align: right;
+  font-size: var(--fs-input);
 }
 
 .opt6 label {
   visibility: hidden;
 }
+
+/* RESULT */
+.result {
+  padding: 2.3125rem 1.5rem 1.5rem;
+  border-radius: 0.9375rem;
+  background-color: var(--very-dark-cyan);
+  color: var(--white);
+}
+
+.tip__amount {
+  margin-bottom: 1.25rem;
+}
+
+.spe__char {
+  display: block;
+
+  font-size: var(--fs-small);
+  color: var(--grayish-cyan);
+}
+
+.money {
+  font-size: var(--fs-large);
+  color: var(--strong-cyan);
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  width: 100%;
+  max-width: 100%;
+
+  margin-top: 2rem;
+  padding: .5625rem;
+
+  border: transparent;
+  border-radius: .3125rem;
+  background-color: var(--btn);
+  color: var(--very-dark-cyan);
+  text-transform: uppercase;
+}
+
+.reset {
+  background-color: var(--strong-cyan);
+}
+
+.reset:hover {
+  background-color: var(--light-cyan);
+  cursor: pointer;
+}
+
 
 @media (min-width: 1440px) {
   body {
