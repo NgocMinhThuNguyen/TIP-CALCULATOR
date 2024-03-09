@@ -83,6 +83,7 @@ select {
   --white: hsl(0, 0%, 100%);
   --light-cyan: hsl(173, 61%, 77%);
   --btn: hsl(183, 79%, 24%);
+  --error: hsl(13, 70%, 61%);
 
   --fs-small: .8125rem;
   --fs-text: 1rem;
@@ -288,7 +289,23 @@ button {
   cursor: pointer;
 }
 
+.error label {
+  display: flex;
+  justify-content: space-between;
+}
 
+.error span {
+  color: var(--error);
+}
+
+.error input {
+  outline-color: var(--error);
+  border: 2px solid var(--error);
+}
+
+.success input {
+  border: 2px solid var(--strong-cyan);
+}
 @media (min-width: 1440px) {
   body {
     gap: 5.5rem;
