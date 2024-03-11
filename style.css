@@ -223,6 +223,10 @@ fieldset {
   color: var(--very-dark-cyan);
 }
 
+.opt6 {
+  position: relative;
+}
+
 .opt6 input {
   width: 100%;
 }
@@ -233,7 +237,11 @@ fieldset {
 }
 
 .opt6 label {
-  visibility: hidden;
+  /* color: var(--error); */
+  font-size: var(--fs-text);
+  position: absolute;
+  top: 60px;
+  right: 0;
 }
 
 /* RESULT */
