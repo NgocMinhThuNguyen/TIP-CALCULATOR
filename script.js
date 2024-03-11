@@ -1,38 +1,58 @@
 const bill = document.querySelector("#bill");
 const customTip = document.querySelector("#custom");
 const people = document.querySelector("#people");
-const userInput = document.querySelectorAll(".number");
+const selectedBtns = document.querySelectorAll(".chosen__input");
 
-userInput.forEach(checkSelectedInput);
+let billAmount = 0;
+let tipAmount = 0;
+let numberPeople = 0;
+let passedEvent = 0;
 
-function checkSelectedInput(selectedInput) {
-  selectedInput.addEventListener("input", (event) => {
-    let a = getNumber(event);
-  })
+selectedBtns.forEach(function(selectedBtn) {
+  selectedBtn.addEventListener("click", getEvent);
+})
+
+function getEvent(event) {
+  if ((event.currentTarget === bill) || (event.currentTarget === people)) {
+    event.currentTarget.addEventListener("input", validateInput);
+  } else {
+    if (event.currentTarget.hasAttribute("data-tip")) {
+      tipAmount = parseInt(event.target.dataset.tip);
+      calculateCost(billAmount, tipAmount, numberPeople);
+    } else {
+      event.currentTarget.addEventListener("input", validateInput);
+    }
+  }
 }
 
-function getNumber (event) {
+function validateInput (event) {
   const number = event.currentTarget.value;
   const parentElement = event.currentTarget.parentNode;
+  let errorContent = parentElement.querySelector("span");
 
   if (number === "") {
     showError(parentElement);
+    errorContent.innerText = "Can't be zero"
   } else {
     if (!(isNaN(number))) {
-      showSuccess(parentElement);
       if (event.currentTarget === people) {
-        return parseInt(number);
+        numberPeople = parseInt(number)
+      } else if (event.currentTarget === bill) {
+        billAmount = parseFloat(number);
       } else {
-        return parseFloat(number);
+        tipAmount = parseFloat(number);
       }
+      showSuccess(parentElement);
+      errorContent.innerText = "";
+      calculateCost(billAmount, tipAmount, numberPeople);
     } else {
       showError(parentElement);
+      errorContent.innerText = "Should be a number"
     }
   }
 }
 
 function showError(error) {
-  let errorContent = error.querySelector("span");
   if (error.classList.contains("success")) {
     error.classList.remove("success");
   }
@@ -40,7 +60,6 @@ function showError(error) {
   if (!(error.classList.contains("error"))) {
     error.classList.add("error");
   }
-  errorContent.innerText = "Can't be zero";
 }
 
 function showSuccess(error) {
@@ -50,5 +69,16 @@ function showSuccess(error) {
 
   if (!(error.classList.contains("success"))) {
     error.classList.add("success");
+  }
+}
+
+function validateValue(value) {
+  return ((!isNaN(value)) && (value != 0)) ? true : false;
+}
+
+function calculateCost(billAmount, tipAmount, numberPeople) {
+  if (validateValue(billAmount) && validateValue(tipAmount) && validateValue(numberPeople)) {
+    let tip = (billAmount*tipAmount) / 5;
+    console.log(tip);
   }
 }
