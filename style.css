@@ -237,7 +237,6 @@ fieldset {
 }
 
 .opt6 label {
-  /* color: var(--error); */
   font-size: var(--fs-text);
   position: absolute;
   top: 60px;
@@ -283,20 +282,12 @@ button {
 
   border: transparent;
   border-radius: .3125rem;
-  background-color: var(--btn);
+  background-color: var(--strong-cyan);
   color: var(--very-dark-cyan);
   text-transform: uppercase;
 }
 
-.reset {
-  background-color: var(--strong-cyan);
-}
-
-.reset:hover {
-  background-color: var(--light-cyan);
-  cursor: pointer;
-}
-
+/* ERROR */
 .error label {
   display: flex;
   justify-content: space-between;
@@ -314,11 +305,12 @@ button {
 .success input {
   border: 2px solid var(--strong-cyan);
 }
-@media (min-width: 1440px) {
+
+@media (min-width: 90rem) {
   body {
     gap: 5.5rem;
 
-    padding: 140px 260px 0;
+    padding: 75px 260px 0;
   }
 
   main {
@@ -343,5 +335,14 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+
+  button {
+    background-color: var(--btn);
+  }
+
+  button:hover {
+    cursor: pointer;
+    background-color: var(--light-cyan);
   }
 }
