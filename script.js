@@ -2,15 +2,36 @@ const bill = document.querySelector("#bill");
 const customTip = document.querySelector("#custom");
 const people = document.querySelector("#people");
 const selectedBtns = document.querySelectorAll(".chosen__input");
+const deleteBtn = document.querySelector("button");
+const radioBtns = document.querySelectorAll("input[type='radio']");
+const tipResult = document.querySelector(".tip");
+const totalResult = document.querySelector(".total");
 
 let billAmount = 0;
 let tipAmount = 0;
 let numberPeople = 0;
-let passedEvent = 0;
 
+// Start calculator
 selectedBtns.forEach(function(selectedBtn) {
   selectedBtn.addEventListener("click", getEvent);
 })
+
+// Reset calculator
+deleteBtn.addEventListener("click", () => {
+  resetForm(bill);
+  resetForm(customTip);
+  resetForm(people);
+  resetResult(tipResult);
+  resetResult(totalResult);
+
+  radioBtns.forEach(radioBtn => {
+    radioBtn.checked = false;
+  })
+
+  billAmount = 0;
+  tipAmount = 0;
+  numberPeople = 0;
+});
 
 function getEvent(event) {
   if ((event.currentTarget === bill) || (event.currentTarget === people)) {
@@ -26,27 +47,29 @@ function getEvent(event) {
 }
 
 function validateInput (event) {
-  const number = event.currentTarget.value;
-  const parentElement = event.currentTarget.parentNode;
-  let errorContent = parentElement.querySelector("span");
+  const userInput = event.currentTarget.value;
+  const wrapper = event.currentTarget.parentNode;
+  let errorContent = wrapper.querySelector("span");
 
-  if (number === "") {
-    showError(parentElement);
-    errorContent.innerText = "Can't be zero"
+  if (userInput === "") {
+    if((event.currentTarget !== customTip)) {
+      showError(wrapper);
+      errorContent.innerText = "Can't be zero";
+    }
   } else {
-    if (!(isNaN(number))) {
+    if (!(isNaN(userInput))) {
       if (event.currentTarget === people) {
-        numberPeople = parseInt(number)
+        numberPeople = parseInt(userInput)
       } else if (event.currentTarget === bill) {
-        billAmount = parseFloat(number);
+        billAmount = parseFloat(userInput);
       } else {
-        tipAmount = parseFloat(number);
+        tipAmount = parseFloat(userInput);
       }
-      showSuccess(parentElement);
+      showSuccess(wrapper);
       errorContent.innerText = "";
       calculateCost(billAmount, tipAmount, numberPeople);
     } else {
-      showError(parentElement);
+      showError(wrapper);
       errorContent.innerText = "Should be a number"
     }
   }
@@ -72,13 +95,26 @@ function showSuccess(error) {
   }
 }
 
-function validateValue(value) {
-  return ((!isNaN(value)) && (value != 0)) ? true : false;
+function calculateCost(billAmount, tipAmount, numberPeople) {
+  let tipResult = document.querySelector(".tip");
+  let totalResult = document.querySelector(".total");
+
+  if ((billAmount !== 0) && (numberPeople !== 0)) {
+    billAmount = billAmount*100;
+    tipAmount = tipAmount/100;
+
+    let tip = (billAmount*tipAmount) / numberPeople;
+    let total = (billAmount + billAmount*tipAmount) / numberPeople;
+
+    tipResult.textContent = (Math.round(tip)/100); 
+    totalResult.textContent = (Math.round(total)/100);
+  }
 }
 
-function calculateCost(billAmount, tipAmount, numberPeople) {
-  if (validateValue(billAmount) && validateValue(tipAmount) && validateValue(numberPeople)) {
-    let tip = (billAmount*tipAmount) / 5;
-    console.log(tip);
-  }
+function resetForm(event) {
+  event.value = "";
+}
+
+function resetResult(event) {
+  event.textContent = "0.00";
 }
