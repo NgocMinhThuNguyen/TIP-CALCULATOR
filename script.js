@@ -51,7 +51,7 @@ function validateInput (event) {
   const wrapper = event.currentTarget.parentNode;
   let errorContent = wrapper.querySelector("span");
 
-  if (userInput === "") {
+  if (userInput === "0" || userInput === "") {
     if((event.currentTarget !== customTip)) {
       showError(wrapper);
       errorContent.innerText = "Can't be zero";
