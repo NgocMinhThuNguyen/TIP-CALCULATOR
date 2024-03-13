@@ -243,10 +243,6 @@ fieldset {
   color: var(--grayish-cyan);
 }
 
-/* #custom1.radio__opt, label.radio__opt {
-  display: none;
-} */
-
 .opt6 {
   position: relative;
   z-index: 2;
