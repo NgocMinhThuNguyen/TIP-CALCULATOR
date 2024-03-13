@@ -221,8 +221,9 @@ fieldset {
   color: var(--very-dark-cyan);
 }
 
-.opt6:hover input, .opt6:hover label{
+.opt6:hover, .opt6:hover input, .opt6:hover label{
   cursor: text;
+  background-color: var(--very-light-grayish-cyan);
 }
 
 .opt6 input {
@@ -235,24 +236,18 @@ fieldset {
   padding-right: 1rem;
 }
 
-.opt6 input:checked {
-  background-color: var(--very-light-grayish-cyan);
-}
-
 .opt6 input:checked + label {
   color: var(--grayish-cyan);
 }
 
 .opt6 {
   position: relative;
-  z-index: 2;
 }
 
 .opt6 #custom2 {
   width: 100%;
   padding-right: 1rem;
   position: relative;
-  z-index: 1;
 }
 
 .opt6 #custom2::placeholder {
@@ -265,10 +260,10 @@ fieldset {
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 1;
+  visibility: hidden;
 }
 
-#custom2.text__opt, label.radio__opt {
+input.text__opt, label.text__opt {
   display: none;
 }
 
