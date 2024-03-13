@@ -115,6 +115,7 @@ footer a {
 }
 
 main {
+  width: 100%;
   max-width: 100%;
   background-color: var(--white);
 
@@ -122,14 +123,11 @@ main {
   padding: 2rem 1.5rem;
 }
 
-section {
+form {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   gap: 2rem;
-}
-
-form > * {
-  margin-bottom: 2rem;
 }
 
 .title {
@@ -230,7 +228,15 @@ fieldset {
 .opt6 label {
   color: var(--grayish-cyan);
   justify-content: flex-end;
-  margin-right: 1rem;
+  padding-right: 1rem;
+}
+
+.opt6 input:checked {
+  background-color: var(--very-light-grayish-cyan);
+}
+
+.opt6 input:checked + label {
+  color: var(--grayish-cyan);
 }
 
 /* 
@@ -273,7 +279,7 @@ fieldset {
   color: var(--grayish-cyan);
 }
 
-.money {
+output {
   font-size: var(--fs-large);
   color: var(--strong-cyan);
 }
@@ -328,13 +334,14 @@ button {
     padding: 2rem 2rem 2rem 3rem;
   }
 
-  section {
-    flex-direction: row;
+  form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 3rem;
   }
 
-  form {
-    flex-basis: 50%;
+  .bill__wrapper, fieldset, .people__wrapper {
+    grid-column: 1/2;
   }
 
   .opts {
@@ -342,7 +349,8 @@ button {
   }
 
   .result {
-    flex-basis: 50%;
+    grid-column: 2/3;
+    grid-row: 1/4;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
