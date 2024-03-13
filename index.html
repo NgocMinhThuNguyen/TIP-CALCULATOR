@@ -22,13 +22,13 @@
   <main>
     <section>
       <!-- Calculator starts -->
-      <form action="" class="calculator_form">
+      <form action="" class="calculator__form">
         <div class="bill__wrapper">
           <label for="bill" class="title">Bill<span></span></label>
-          <input type="text" inputmode="demical" id="bill" name="bill" class="number" placeholder="0">
+          <input type="text" inputmode="demical" id="bill" name="bill" class="number" placeholder="0" value="">
         </div>
         
-        <fieldset>
+        <fieldset class="selected__tip">
           <legend class="title">Select Tip &#37;</legend>
           <div class="opts">
             <div class="opt opt1">
@@ -61,7 +61,7 @@
               <label for="custom1" class="radio__opt">Custom</label>
 
               <input type="text" inputmode="demical" id="custom2" class="text__opt number" name="tip" placeholder="Custom">
-              <label for="custom2" class="text__opt">Custom</label>
+              <label for="custom2" class="text__opt">Custom<span></span></label>
             </div>
           </div>
         </fieldset>
