@@ -221,6 +221,10 @@ fieldset {
   color: var(--very-dark-cyan);
 }
 
+.opt6:hover input, .opt6:hover label{
+  cursor: text;
+}
+
 .opt6 input {
   background-color: var(--very-light-grayish-cyan);
 }
@@ -239,26 +243,38 @@ fieldset {
   color: var(--grayish-cyan);
 }
 
-/* 
+/* #custom1.radio__opt, label.radio__opt {
+  display: none;
+} */
+
 .opt6 {
   position: relative;
+  z-index: 2;
 }
 
-.opt6 input {
+.opt6 #custom2 {
   width: 100%;
+  padding-right: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
-.opt6 input::placeholder {
+.opt6 #custom2::placeholder {
   color: var(--grayish-cyan);
   font-size: var(--fs-input);
+  text-align: right;
 }
 
-.opt6 label {
-  font-size: var(--fs-text);
+.opt6 label.text__opt {
   position: absolute;
-  top: 60px;
+  top: 0;
   right: 0;
-} */
+  z-index: 1;
+}
+
+#custom2.text__opt, label.radio__opt {
+  display: none;
+}
 
 /* RESULT */
 .result {
