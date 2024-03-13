@@ -57,8 +57,9 @@
             </div>
 
             <div class="opt opt6">
-              <input type="text" inputmode="demical" id="custom" class="number chosen__input" name="tip" placeholder="Custom">
-              <label for="custom"><span></span></label>
+              <input type="radio" inputmode="demical" id="custom" class="number chosen__input" name="tip" placeholder="Custom">
+              <label for="custom">Custom</label>
+              <!-- <label for="custom"><span></span></label> -->
             </div>
           </div>
         </fieldset>
@@ -67,25 +68,25 @@
           <label for="people" class="title">Number of People<span></span></label>
           <input type="text" inputmode="demical" id="people" name="people" class="number chosen__input" placeholder="0">
         </div>
-      </form>
-      <!-- Calculator ends -->
 
-      <!-- Result starts -->
-      <div class="result">
-        <div>
-          <div class="tip__amount flex">
-            <p>Tip Amount <span class="spe__char">/ person</span></p>
-            <p class="money">&dollar;<span class="tip">0.00</span></p>
+        <!-- Result starts -->
+        <div class="result">
+          <div>
+            <div class="tip__amount flex">
+              <label for="tip">Tip Amount <span class="spe__char">/ person</span></label>
+              <output name="tip">&dollar;<span class="tip">0.00</span></output>
+            </div>
+    
+            <div class="total__amount flex">
+              <label for="total">Total <span class="spe__char">/ person</span></label>
+              <output name="total">&dollar;<span class="total">0.00</span></output>
+            </div>
           </div>
-  
-          <div class="total__amount flex">
-            <p>Total <span class="spe__char">/ person</span></p>
-            <p class="money">&dollar;<span class="total">0.00</span></p>
-          </div>
-        </div>
 
-        <button>Reset</button>
+          <button type="reset">Reset</button>
       </div>
+       <!-- Result ends -->
+      </form>
       <!-- Calculator ends -->
     </section>
   </main>
