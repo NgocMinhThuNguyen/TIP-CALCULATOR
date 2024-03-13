@@ -182,7 +182,7 @@ fieldset {
   display: grid;
 }
 
-.opt input[type='radio'] {
+.opt input {
   appearance: none;
 
   grid-column: 1/2;
@@ -205,12 +205,12 @@ fieldset {
   margin-block: .9375rem;
 }
 
-.opt:hover input[type='radio'] {
+.opt:hover input {
   background-color: var(--light-cyan);
   cursor: pointer;
 }
 
-.opt input[type='radio']:checked {
+.opt input:checked {
   background-color: var(--strong-cyan);
 }
 
@@ -219,10 +219,21 @@ fieldset {
   cursor: pointer;
 }
 
-.opt input[type='radio']:checked + label {
+.opt input:checked + label {
   color: var(--very-dark-cyan);
 }
 
+.opt6 input {
+  background-color: var(--very-light-grayish-cyan);
+}
+
+.opt6 label {
+  color: var(--grayish-cyan);
+  justify-content: flex-end;
+  margin-right: 1rem;
+}
+
+/* 
 .opt6 {
   position: relative;
 }
@@ -241,7 +252,7 @@ fieldset {
   position: absolute;
   top: 60px;
   right: 0;
-}
+} */
 
 /* RESULT */
 .result {
