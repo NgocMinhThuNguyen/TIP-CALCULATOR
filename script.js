@@ -1,50 +1,26 @@
-const bill = document.querySelector("#bill");
-const customTip = document.querySelector("#custom");
-const people = document.querySelector("#people");
-const selectedBtns = document.querySelectorAll(".chosen__input");
-const deleteBtn = document.querySelector("button");
-const radioBtns = document.querySelectorAll("input[type='radio']");
+const enterBill = document.querySelector("#bill");
+const enterTip = document.querySelector("#custom2");
+const enterPeople = document.querySelector("#people");
+const selectedTip = document.querySelector(".selected__tip");
 const tipResult = document.querySelector(".tip");
 const totalResult = document.querySelector(".total");
+const form = document.querySelector(".calculator__form")
 
 let billAmount = 0;
 let tipAmount = 0;
 let numberPeople = 0;
 
-// Start calculator
-selectedBtns.forEach(function(selectedBtn) {
-  selectedBtn.addEventListener("click", getEvent);
-})
-
-// Reset calculator
-deleteBtn.addEventListener("click", () => {
-  resetForm(bill);
-  resetForm(customTip);
-  resetForm(people);
-  resetResult(tipResult);
-  resetResult(totalResult);
-
-  radioBtns.forEach(radioBtn => {
-    radioBtn.checked = false;
-  })
-
+enterBill.addEventListener("input", validateInput);
+enterPeople.addEventListener("input", validateInput);
+selectedTip.addEventListener("change", getTip);
+form.addEventListener("reset", (event) => {
   billAmount = 0;
   tipAmount = 0;
   numberPeople = 0;
-});
 
-function getEvent(event) {
-  if ((event.currentTarget === bill) || (event.currentTarget === people)) {
-    event.currentTarget.addEventListener("input", validateInput);
-  } else {
-    if (event.currentTarget.hasAttribute("data-tip")) {
-      tipAmount = parseInt(event.target.dataset.tip);
-      calculateCost(billAmount, tipAmount, numberPeople);
-    } else {
-      event.currentTarget.addEventListener("input", validateInput);
-    }
-  }
-}
+  tipResult.textContent = "0.00";
+  totalResult.textContent = "0.00";
+});
 
 function validateInput (event) {
   const userInput = event.currentTarget.value;
@@ -52,7 +28,7 @@ function validateInput (event) {
   let errorContent = wrapper.querySelector("span");
 
   if (userInput === "0" || userInput === "") {
-    if((event.currentTarget !== customTip)) {
+    if((event.currentTarget !== enterTip)) {
       showError(wrapper);
       errorContent.innerText = "Can't be zero";
     }
@@ -72,6 +48,24 @@ function validateInput (event) {
       showError(wrapper);
       errorContent.innerText = "Should be a number"
     }
+  }
+}
+
+function getTip(event) {
+  if (event.target.hasAttribute("data-tip")) {
+    tipAmount = parseInt(event.target.dataset.tip);
+    calculateCost(billAmount, tipAmount, numberPeople);
+  } else {
+    const textInput = document.querySelector("#custom2");
+    const labelRadio = document.querySelector("label.radio__opt");
+    const labelText = document.querySelector("label.text__opt");
+   
+    event.target.style.display = "none";
+    labelRadio.style.display = "none";
+    textInput.style.display = "block";
+    labelText.style.display = "block";
+
+    textInput.addEventListener("input", validateInput);
   }
 }
 
@@ -96,9 +90,6 @@ function showSuccess(error) {
 }
 
 function calculateCost(billAmount, tipAmount, numberPeople) {
-  let tipResult = document.querySelector(".tip");
-  let totalResult = document.querySelector(".total");
-
   if ((billAmount !== 0) && (numberPeople !== 0)) {
     billAmount = billAmount*100;
     tipAmount = tipAmount/100;
@@ -109,12 +100,4 @@ function calculateCost(billAmount, tipAmount, numberPeople) {
     tipResult.textContent = (Math.round(tip)/100); 
     totalResult.textContent = (Math.round(total)/100);
   }
-}
-
-function resetForm(event) {
-  event.value = "";
-}
-
-function resetResult(event) {
-  event.textContent = "0.00";
 }
