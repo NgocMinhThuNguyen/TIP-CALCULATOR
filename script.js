@@ -57,13 +57,11 @@ function getTip(event) {
     calculateCost(billAmount, tipAmount, numberPeople);
   } else {
     const textInput = document.querySelector("#custom2");
-    const labelRadio = document.querySelector("label.radio__opt");
-    const labelText = document.querySelector("label.text__opt");
-   
+    const labelRadio = document.querySelector("label.radio__opt");   
     event.target.style.display = "none";
     labelRadio.style.display = "none";
     textInput.style.display = "block";
-    labelText.style.display = "block";
+    textInput.focus();
 
     textInput.addEventListener("input", validateInput);
   }
