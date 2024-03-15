@@ -82,7 +82,8 @@ button.addEventListener("click", (event) => {
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+- Enhance the accessibility of the custom tip form by applying the `visually-hidden` technique instead of using `display: none`, as it needs to remain accessible to screen readers.
+- Hide the custom tip input field when the user selects other radio tip buttons with `input="text"`.
 
 ## Author
 
